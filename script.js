@@ -1,12 +1,10 @@
-// Configurações iniciais e variáveis globais
-let currentMode = "study"; // Modos: "study", "test", "review"
-let userScore = 100; // Pontuação inicial
-let attemptCounts = {}; // Contagem de tentativas por questão
+let currentMode = "study";
+let userScore = 100; 
+let attemptCounts = {};
 let timerInterval;
 let timerSeconds = 0;
 let timerRunning = false;
 
-// Carrega dados salvos do localStorage
 function loadSavedData() {
   const savedData = localStorage.getItem("wanQuizData");
   if (savedData) {
@@ -26,8 +24,6 @@ function loadSavedData() {
   }
 }
 
-// Salva dados no localStorage
-// Salva dados no localStorage
 function saveData() {
   const completedQuestions = questions
     .filter((q) => q.completed)
@@ -43,7 +39,6 @@ function saveData() {
   localStorage.setItem("wanQuizData", JSON.stringify(data));
 }
 
-// Atualiza a função loadSavedData para carregar o estado do cronômetro
 function loadSavedData() {
   const savedData = localStorage.getItem("wanQuizData");
   if (savedData) {
@@ -70,29 +65,23 @@ function loadSavedData() {
   }
 }
 
-// Gera as opções de categorias e configura o filtro
 function setupCategoryFilter() {
   const categoryFilter = document.getElementById("category-filter");
 
-  // Limpa as opções existentes, mantendo apenas a opção "Todas as categorias"
   while (categoryFilter.options.length > 1) {
     categoryFilter.remove(1);
   }
 
-  // Coleta todas as categorias únicas
   const categories = new Set();
 
   questions.forEach((question) => {
-    // Lidar com ambos os formatos de questões
     if (question.hasOwnProperty("category")) {
       categories.add(question.category);
     } else {
-      // Para as questões do segundo formato, usamos uma categoria padrão
       categories.add("Redes WAN");
     }
   });
 
-  // Adiciona as categorias como opções
   categories.forEach((category) => {
     const option = document.createElement("option");
     option.value = category;
@@ -100,11 +89,9 @@ function setupCategoryFilter() {
     categoryFilter.appendChild(option);
   });
 
-  // Adiciona o event listener para filtragem
   categoryFilter.addEventListener("change", filterQuestionsByCategory);
 }
 
-// Filtra as questões pela categoria selecionada
 function filterQuestionsByCategory() {
   const selectedCategory = document.getElementById("category-filter").value;
   const allQuestions = document.querySelectorAll(".question");
@@ -113,7 +100,6 @@ function filterQuestionsByCategory() {
     const questionId = parseInt(questionElement.dataset.id);
     const question = questions.find((q) => q.id === questionId);
 
-    // Verifica se a questão pertence à categoria selecionada ou se todas as categorias estão selecionadas
     const isOldFormat = question.hasOwnProperty("category");
     const questionCategory = isOldFormat ? question.category : "Redes WAN";
 
@@ -125,7 +111,6 @@ function filterQuestionsByCategory() {
   });
 }
 
-// Alternância de tema (claro/escuro)
 document.getElementById("theme-toggle").addEventListener("click", function () {
   const currentTheme = document.documentElement.getAttribute("data-theme");
   if (currentTheme === "dark") {
@@ -150,7 +135,6 @@ function updateThemeButton() {
 
 document.getElementById("start-timer").addEventListener("click", startTimer);
 
-// Adicionar botão de reset para o cronômetro
 const timerContainer = document.getElementById("timer-container");
 if (!document.getElementById("reset-timer")) {
   const resetButton = document.createElement("button");
@@ -161,17 +145,15 @@ if (!document.getElementById("reset-timer")) {
   timerContainer.appendChild(resetButton);
 }
 
-// Configuração do seletor de modo
 document
   .getElementById("mode-selector")
   .addEventListener("change", function () {
     setMode(this.value);
   });
 
-// Inicializa o modo de estudo ao carregar a página
 document.addEventListener("DOMContentLoaded", function () {
   setMode("study");
-  loadSavedData(); // Carrega dados salvos do localStorage
+  loadSavedData();
 });
 
 function formatTime(seconds) {
@@ -182,7 +164,6 @@ function formatTime(seconds) {
     .padStart(2, "0")}`;
 }
 
-// Função para iniciar o cronômetro
 function startTimer() {
   if (!timerRunning) {
     timerRunning = true;
@@ -196,14 +177,12 @@ function startTimer() {
   }
 }
 
-// Função para pausar o cronômetro
 function pauseTimer() {
   clearInterval(timerInterval);
   timerRunning = false;
   document.getElementById("start-timer").textContent = "Retomar";
 }
 
-// Função para zerar o cronômetro
 function resetTimer() {
   clearInterval(timerInterval);
   timerRunning = false;
@@ -215,32 +194,26 @@ function resetTimer() {
 function setMode(mode) {
   currentMode = mode;
 
-  // Configura a interface de acordo com o modo
   const timerContainer = document.getElementById("timer-container");
 
   if (mode === "test") {
-    // No modo teste, exibir o timer e resetá-lo
     timerContainer.style.display = "flex";
     resetTimer();
-    startTimer(); // Iniciar automaticamente no modo teste
+    startTimer();
   } else {
-    // Nos outros modos, ocultar ou mostrar o timer conforme necessário
     if (mode === "study") {
       timerContainer.style.display = "flex";
       resetTimer();
     } else {
-      // modo review
       timerContainer.style.display = "none";
       pauseTimer();
     }
   }
 }
 
-// Embaralhar questões
 document
   .getElementById("shuffle-questions")
   .addEventListener("click", function () {
-    // Algoritmo Fisher-Yates para embaralhar array
     for (let i = questions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [questions[i], questions[j]] = [questions[j], questions[i]];
@@ -248,7 +221,6 @@ document
     renderQuestions();
   });
 
-// Reiniciar progresso
 document
   .getElementById("reset-progress")
   .addEventListener("click", function () {
@@ -266,7 +238,6 @@ document
     }
   });
 
-// Dados das questões
 const questions = [
   {
     id: 1,
@@ -687,7 +658,6 @@ const questions = [
   },
 ];
 
-// Elementos DOM
 const questionsContainer = document.getElementById("questions-container");
 const completedCountElement = document.getElementById("completed-count");
 const totalCountElement = document.getElementById("total-count");
@@ -700,10 +670,8 @@ const modalTitle = document.getElementById("modal-title");
 const modalBody = document.getElementById("modal-body");
 const modalClose = document.getElementById("modal-close");
 
-// Configura total de questões
 totalCountElement.textContent = questions.length;
 
-// Renderiza as questões
 function renderQuestions() {
   questionsContainer.innerHTML = "";
 
@@ -714,12 +682,9 @@ function renderQuestions() {
       : "question";
     questionElement.dataset.id = question.id;
 
-    // Determina qual formato o objeto da questão está usando
     const isOldFormat = question.hasOwnProperty("question");
 
-    // Conteúdo HTML baseado no formato do objeto
     if (isOldFormat) {
-      // Formato antigo (question, answer, options)
       questionElement.innerHTML = `
         <div class="question-card">
           <div class="question-number">${question.id}</div>
@@ -743,7 +708,6 @@ function renderQuestions() {
         </div>
       `;
     } else {
-      // Novo formato (pergunta, alternativas, resposta)
       questionElement.innerHTML = `
         <div class="question-card">
           <div class="question-number">${question.id}</div>
@@ -782,12 +746,10 @@ function renderQuestions() {
     questionsContainer.appendChild(questionElement);
   });
 
-  // Adiciona event listeners aos botões
   document.querySelectorAll(".question button").forEach((button) => {
     button.addEventListener("click", checkAnswer);
   });
 
-  // Adiciona event listeners aos campos de input para permitir envio com Enter
   document.querySelectorAll(".question input").forEach((input) => {
     input.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
@@ -802,7 +764,6 @@ function renderQuestions() {
   setupCategoryFilter();
 }
 
-// Verifica a resposta
 function checkAnswer(e) {
   const questionElement = e.target.closest(".question");
   const questionId = parseInt(questionElement.dataset.id);
@@ -812,43 +773,35 @@ function checkAnswer(e) {
   const question = questions.find((q) => q.id === questionId);
   const userAnswer = inputElement.value.toLowerCase().trim();
 
-  // Determina qual formato o objeto da questão está usando
   const isOldFormat = question.hasOwnProperty("question");
 
-  // Compara a resposta com base no formato
   let isCorrect = false;
 
   if (isOldFormat) {
     isCorrect = userAnswer === question.answer;
   } else {
-    // Converte a resposta numérica (índice) para letra (a, b, c, d, e)
     const letterAnswers = ["a", "b", "c", "d", "e"];
     const correctAnswer = letterAnswers[question.resposta];
     isCorrect = userAnswer === correctAnswer;
   }
 
   if (isCorrect) {
-    // Resposta correta
     question.completed = true;
     questionElement.classList.add("completed");
     inputElement.disabled = true;
     e.target.disabled = true;
     feedbackElement.textContent = "";
 
-    // Atualiza estatísticas
     updateStats();
 
-    // Mostra o modal com a explicação
     showExplanationModal(question);
   } else {
-    // Resposta incorreta
     feedbackElement.textContent = "Resposta incorreta. Tente novamente.";
     inputElement.value = "";
     inputElement.focus();
   }
 }
 
-// Mostra o modal com a explicação
 function showExplanationModal(question) {
   const isOldFormat = question.hasOwnProperty("question");
 
@@ -881,19 +834,16 @@ function showExplanationModal(question) {
   modalOverlay.classList.add("show");
 }
 
-// Fecha o modal
 modalClose.addEventListener("click", () => {
   modalOverlay.classList.remove("show");
 });
 
-// Fecha o modal ao clicar fora dele
 modalOverlay.addEventListener("click", (e) => {
   if (e.target === modalOverlay) {
     modalOverlay.classList.remove("show");
   }
 });
 
-// Atualiza estatísticas
 function updateStats() {
   const completedQuestions = questions.filter((q) => q.completed).length;
   const totalQuestions = questions.length;
@@ -908,5 +858,4 @@ window.addEventListener("beforeunload", function () {
   saveData();
 });
 
-// Inicializa a página
 renderQuestions();

@@ -307,7 +307,6 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .dashboard-controls {
     flex-direction: column;
