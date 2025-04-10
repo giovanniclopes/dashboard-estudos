@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta header { background-color: var(--dark); color: white; text-align:
+    center; padding: 2rem 0; margin-bottom: 2rem; } h1 { font-size: 2rem;
+    margin-bottom: 0.5rem; } .subtitle { color: var(--primary-light);
+    font-weight: 300; } .header-controls { display: flex; justify-content:
+    center; gap: 1rem; margin-top: 1rem; } .icon-button { background: rgba(255,
+    255, 255, 0.2); border: none; border-radius: 50%; width: 2.5rem; height:
+    2.5rem; display: flex; align-items: center; justify-content: center; color:
+    white; cursor: pointer; transition: all 0.2s ease; } .icon-button:hover {
+    background: rgba(255, 255, 255, 0.3); transform: scale(1.1); }>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudo para Prova de Redes WAN</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="wan-quiz-page.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Estudo para Prova de Redes WAN</h1>
+        <p class="subtitle">Exercícios essenciais para sua preparação</p>
+        <div class="header-controls">
+          <button id="theme-toggle" class="icon-button" title="Alternar tema">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button
+            id="shuffle-questions"
+            class="icon-button"
+            title="Embaralhar questões"
+          >
+            <i class="fas fa-random"></i>
+          </button>
+          <button
+            id="reset-progress"
+            class="icon-button"
+            title="Reiniciar progresso"
+          >
+            <i class="fas fa-redo-alt"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="stats">
+        <div class="stat-box">
+          <div class="stat-number" id="completed-count">0</div>
+          <div class="stat-label">Completados</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number" id="total-count">15</div>
+          <div class="stat-label">Total</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number" id="completion-percentage">0%</div>
+          <div class="stat-label">Concluído</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number" id="score">100</div>
+          <div class="stat-label">Pontuação</div>
+        </div>
+      </div>
+
+      <div class="controls-container">
+        <div class="filter-box">
+          <label for="category-filter">Filtrar por categoria:</label>
+          <select id="category-filter">
+            <option value="">Todas as categorias</option>
+            <!-- As categorias serão adicionadas pelo JavaScript -->
+          </select>
+        </div>
+
+        <div class="mode-box">
+          <label for="mode-selector">Modo de estudo:</label>
+          <select id="mode-selector">
+            <option value="study">Modo Estudo</option>
+            <option value="test">Modo Teste</option>
+            <option value="review">Modo Revisão</option>
+          </select>
+        </div>
+
+        <div class="timer-container" id="timer-container">
+          <span id="timer">00:00</span>
+          <button id="start-timer" class="timer-button">Iniciar</button>
+        </div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress" id="progress-bar"></div>
+      </div>
+
+      <div id="questions-container">
+        <!-- Questões serão adicionadas aqui pelo JavaScript -->
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal">
+        <button class="modal-close" id="modal-close">&times;</button>
+        <h3 class="modal-title" id="modal-title">Resposta Correta!</h3>
+        <div class="modal-body" id="modal-body">
+          <!-- Conteúdo da modal será adicionado aqui pelo JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

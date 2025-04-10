@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard de Estudos</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard-style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Dashboard de Estudos</h1>
+        <p class="subtitle">Organize seus estudos para diferentes matérias</p>
+        <div class="header-controls">
+          <button id="theme-toggle" class="icon-button" title="Alternar tema">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="dashboard-controls">
+        <div class="search-container">
+          <input type="text" id="search-quiz" placeholder="Buscar quiz..." />
+          <button class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <div class="sort-container">
+          <span>Ordenar por:</span>
+          <button id="sort-name" class="sort-button">Nome</button>
+          <button id="sort-progress" class="sort-button">Progresso</button>
+          <button id="sort-recent" class="sort-button">Recentes</button>
+        </div>
+
+        <button id="add-quiz-btn" class="add-quiz-button">
+          <i class="fas fa-plus"></i> Novo Quiz
+        </button>
+      </div>
+
+      <div id="quiz-cards-container" class="quiz-cards">
+        <!-- Os cards de quiz serão adicionados aqui pelo JavaScript -->
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>Sistema de Preparação para Provas</p>
+      </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>
