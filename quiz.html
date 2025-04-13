@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard de Estudos</title>
+    <title>Quiz - Dashboard de Estudos</title>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       rel="stylesheet"
@@ -12,16 +12,19 @@
   </head>
   <body>
     <header id="header-container"></header>
-
     <div class="container">
-      <div id="quiz-cards-container" class="quiz-cards"></div>
+      <div id="stats-container"></div>
+
+      <div class="quiz-page-layout">
+        <div class="sidebar">
+          <div id="controls-container"></div>
+        </div>
+
+        <div id="questions-container"></div>
+      </div>
     </div>
 
-    <footer>
-      <div class="container">
-        <p>Sistema de Preparação para Provas</p>
-      </div>
-    </footer>
+    <div id="modal-container"></div>
 
     <script src="components.js"></script>
     <script src="quizConfig.js"></script>
