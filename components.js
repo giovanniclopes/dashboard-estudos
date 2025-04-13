@@ -66,26 +66,28 @@ Components.register("stats", (data) => {
 Components.register("controls", () => {
   return `
     <div class="controls-container">
-      <div class="filter-box">
-        <label for="category-filter">Filtrar por categoria:</label>
-        <select id="category-filter">
-          <option value="">Todas as categorias</option>
-          <!-- As categorias serão adicionadas pelo JavaScript -->
-        </select>
-      </div>
+      <div class="controls-responsive-wrapper">
+        <div class="filter-box">
+          <label for="category-filter">Filtrar por categoria:</label>
+          <select id="category-filter">
+            <option value="">Todas as categorias</option>
+            <!-- As categorias serão adicionadas pelo JavaScript -->
+          </select>
+        </div>
 
-      <div class="mode-box">
-        <label for="mode-selector">Modo de estudo:</label>
-        <select id="mode-selector">
-          <option value="study">Modo Estudo</option>
-          <option value="test">Modo Teste</option>
-          <option value="review">Modo Revisão</option>
-        </select>
-      </div>
+        <div class="mode-box">
+          <label for="mode-selector">Modo de estudo:</label>
+          <select id="mode-selector">
+            <option value="study">Modo Estudo</option>
+            <option value="test">Modo Teste</option>
+            <option value="review">Modo Revisão</option>
+          </select>
+        </div>
 
-      <div class="timer-container" id="timer-container">
-        <span id="timer">00:00</span>
-        <button id="start-timer" class="timer-button">Iniciar</button>
+        <div class="timer-container" id="timer-container">
+          <span id="timer">00:00</span>
+          <button id="start-timer" class="timer-button">Iniciar</button>
+        </div>
       </div>
     </div>
     

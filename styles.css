@@ -602,6 +602,12 @@ button:hover {
   box-shadow: var(--card-shadow);
 }
 
+.controls-responsive-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .filter-box,
 .mode-box {
   margin-bottom: 1rem;
@@ -847,9 +853,24 @@ select {
     padding: 1.25rem;
   }
 
+  /* Ajustes para o layout da página de quiz */
+  .quiz-page-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .sidebar {
+    position: relative;
+    top: 0;
+  }
+
   .controls-container {
-    flex-direction: column;
     padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .controls-responsive-wrapper {
+    flex-direction: column;
   }
 
   .filter-box,
