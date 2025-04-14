@@ -51,7 +51,6 @@
   --danger-dark: #922b21;
 }
 
-/* Estilos básicos */
 * {
   margin: 0;
   padding: 0;
@@ -124,7 +123,6 @@ h1 {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Estilos para o dashboard */
 .dashboard-controls {
   display: flex;
   justify-content: space-between;
@@ -425,7 +423,6 @@ footer p {
   opacity: 0.85;
 }
 
-/* Estilos específicos para a página de quiz */
 .stats {
   display: flex;
   justify-content: space-between;
@@ -748,7 +745,6 @@ select {
   margin-left: 1rem;
 }
 
-/* Estilos de modos de estudo */
 .mode-test .question-card .options-container {
   cursor: pointer;
 }
@@ -766,7 +762,6 @@ select {
   border-left: 3px solid var(--primary);
 }
 
-/* Animações */
 @keyframes correctPulse {
   0% {
     box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
@@ -816,7 +811,6 @@ select {
   transition: all 0.3s ease;
 }
 
-/* Responsividade */
 @media (max-width: 992px) {
   :root {
     --container-padding: 1.5rem;
@@ -839,6 +833,11 @@ select {
     --card-spacing: 1.25rem;
   }
 
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
   h1 {
     font-size: 2rem;
   }
@@ -853,10 +852,59 @@ select {
     padding: 1.25rem;
   }
 
-  /* Ajustes para o layout da página de quiz */
+  .question-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #questions-container {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .quiz-page-layout .sidebar,
+  .quiz-page-layout {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #timer-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .controls-container {
+    width: 100%;
+  }
+
   .quiz-page-layout {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .question-text {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    padding-right: 3rem;
+  }
+
+  .options-container {
+    max-width: 100%;
+  }
+
+  .option {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+
+
+  .question-number {
+    top: 0.75rem;
+    right: 0.75rem;
   }
 
   .sidebar {
@@ -926,6 +974,40 @@ select {
 
   h1 {
     font-size: 1.75rem;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .options-container {
+    width: 100%;
+  }
+
+  .option {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  input[type="text"],
+  select,
+  button {
+    width: 100%;
+  }
+
+  .stats {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-box {
+    margin-bottom: 1rem;
   }
 
   .subtitle {
