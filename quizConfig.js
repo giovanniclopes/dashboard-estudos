@@ -19,8 +19,20 @@ const quizConfig = {
       "Prepare-se para a prova de Engenharia de Software com estas questões.",
     icon: "fa-laptop-code",
     questionsFile: "questions/software-engineering-questions.js",
-    lastAccess: "2024-04-11",
+    lastAccess: "2024-04-13",
     localStorageKey: "softwareEngQuizData",
+  },
+
+  "oop-quiz": {
+    id: "oop-quiz",
+    title: "Programação Orientada a Objetos",
+    subtitle: "Questões sobre conceitos de POO",
+    description:
+      "Teste seus conhecimentos sobre Programação Orientada a Objetos.",
+    icon: "fa-code",
+    questionsFile: "questions/object-oriented-programming.js",
+    lastAccess: "2024-04-13",
+    localStorageKey: "oopQuizData",
   },
 };
 
