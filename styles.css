@@ -430,7 +430,7 @@ footer p {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: var(--card-shadow);
-  margin-bottom: 2rem;
+  margin: 2rem 0rem;
   position: relative;
   overflow: hidden;
 }

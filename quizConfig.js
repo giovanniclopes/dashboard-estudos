@@ -34,6 +34,17 @@ const quizConfig = {
     lastAccess: "2024-04-13",
     localStorageKey: "oopQuizData",
   },
+
+  "php-quiz": {
+    id: "php-quiz",
+    title: "PHP",
+    subtitle: "Questões sobre PHP",
+    description: "Teste seus conhecimentos sobre PHP.",
+    icon: "fa-file-code",
+    questionsFile: "questions/php-questions.js",
+    lastAccess: "2025-04-15",
+    localStorageKey: "phpQuizData",
+  },
 };
 
 const allQuizzes = Object.values(quizConfig).map((quiz) => {

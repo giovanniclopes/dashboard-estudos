@@ -39,27 +39,6 @@ O projeto é ideal para quem deseja revisar conteúdos de forma dinâmica e dive
 - Armazenamento Local (localStorage)
 - FontAwesome para ícones
 
-## 📁 Estrutura do Projeto
-
-```
-dashboard-estudos/
-├── components.js         # Sistema de componentes reutilizáveis
-├── dashboard-style.css   # Estilos para o dashboard principal
-├── dashboard.js          # Lógica do dashboard principal
-├── index.html            # Página inicial com dashboard
-├── quiz.html             # Template de página para quizzes
-├── quizConfig.js         # Configuração dos quizzes disponíveis
-├── quizLoader.js         # Carregador dinâmico de quizzes
-├── script.js             # Scripts principais da aplicação
-├── styles.css            # Estilos globais da aplicação
-├── wan-quiz-page.css     # Estilos específicos para o quiz de WAN
-├── wan-quiz-page.html    # Página específica do quiz de WAN
-└── questions/            # Diretório com os bancos de questões
-    ├── object-oriented-programming.js
-    ├── software-engineering-questions.js
-    └── wan-questions.js
-```
-
 ## 🔧 Como Adicionar um Novo Quiz
 
 1. Crie um novo arquivo de questões em formato JavaScript na pasta `questions/`.
