@@ -45,6 +45,18 @@ const quizConfig = {
     lastAccess: "2025-04-15",
     localStorageKey: "phpQuizData",
   },
+
+  "app-design-quiz": {
+    id: "app-design-quiz",
+    title: "Design de Aplicações",
+    subtitle: "Questões sobre design de aplicações",
+    description:
+      "Teste seus conhecimentos sobre design de aplicativos e interfaces.",
+    icon: "fa-paint-brush",
+    questionsFile: "questions/application-design-questions.js",
+    lastAccess: "2025-04-17",
+    localStorageKey: "appDesignQuizData",
+  },
 };
 
 const allQuizzes = Object.values(quizConfig).map((quiz) => {
