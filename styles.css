@@ -75,6 +75,29 @@ header {
   overflow: hidden;
 }
 
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.header-content {
+  flex: 1;
+}
+
+.back-button {
+  position: absolute;
+  left: var(--container-padding);
+  top: 0;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+}
+
 body {
   background-color: #f5f7fa;
 }

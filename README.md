@@ -62,7 +62,6 @@ const questions = [
     },
     explanation: "Explicação detalhada da resposta correta aqui.",
   },
-  // Adicione mais questões seguindo o mesmo formato
 ];
 ```
 

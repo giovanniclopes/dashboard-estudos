@@ -21,8 +21,17 @@ const Components = {
 Components.register("header", (data) => {
   return `
     <div class="container">
-      <h1>${data.title}</h1>
-      <p class="subtitle">${data.subtitle}</p>
+      <div class="header-top">
+        ${
+          data.showBackButton
+            ? '<a href="index.html" class="back-button icon-button" title="Voltar ao Dashboard"><i class="fas fa-arrow-left"></i></a>'
+            : ""
+        }
+        <div class="header-content">
+          <h1>${data.title}</h1>
+          <p class="subtitle">${data.subtitle}</p>
+        </div>
+      </div>
       <div class="header-controls">
         <button id="theme-toggle" class="icon-button" title="Alternar tema">
           <i class="fas fa-moon"></i>

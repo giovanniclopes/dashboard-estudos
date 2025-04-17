@@ -51,10 +51,10 @@ function loadQuiz(quizId) {
 
   const quiz = quizConfig[quizId];
   document.title = `Quiz - ${quiz.title}`;
-
   Components.renderInto("header", document.getElementById("header-container"), {
     title: quiz.title,
     subtitle: quiz.subtitle,
+    showBackButton: true,
   });
 
   Components.renderInto("stats", document.getElementById("stats-container"), {
@@ -332,7 +332,6 @@ function setupEventListeners(quiz, questions) {
     });
 
   document.getElementById("start-timer").addEventListener("click", startTimer);
-
   const timerContainer = document.getElementById("timer-container");
   if (!document.getElementById("reset-timer")) {
     const resetButton = document.createElement("button");
@@ -469,6 +468,51 @@ function updateStats(questions) {
     "completion-percentage"
   ).textContent = `${percentage}%`;
   document.getElementById("progress-bar").style.width = `${percentage}%`;
+
+  if (completedQuestions === totalQuestions && totalQuestions > 0) {
+    celebrateCompletion();
+  }
+}
+
+function celebrateCompletion() {
+  if (
+    window.lastConfettiTime &&
+    new Date().getTime() - window.lastConfettiTime < 3000
+  ) {
+    return;
+  }
+
+  window.lastConfettiTime = new Date().getTime();
+
+  const duration = 5 * 1000;
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  const interval = setInterval(function () {
+    const timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+
+    const particleCount = 50 * (timeLeft / duration);
+
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+    });
+
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+    });
+  }, 250);
 }
 
 function saveData(quiz, questions) {
